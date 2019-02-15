@@ -1,0 +1,45 @@
+	// BeginInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnLeftAspect
+		if (_self instanceof polybot_modelling_language.TurnLeft){
+			result = polybot_modelling_language.aspects.TurnLeftAspect.execute((polybot_modelling_language.TurnLeft)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnLeftAspect
+	// BeginInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.ReleaseAspect
+		if (_self instanceof polybot_modelling_language.Release){
+			result = polybot_modelling_language.aspects.ReleaseAspect.execute((polybot_modelling_language.Release)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.ReleaseAspect
+	// BeginInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnAspect
+		if (_self instanceof polybot_modelling_language.Turn){
+			result = polybot_modelling_language.aspects.TurnAspect.execute((polybot_modelling_language.Turn)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnAspect
+	// BeginInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.MoveStraightAspect
+		if (_self instanceof polybot_modelling_language.MoveStraight){
+			result = polybot_modelling_language.aspects.MoveStraightAspect.execute((polybot_modelling_language.MoveStraight)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.MoveStraightAspect
+	// BeginInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnRightAspect
+		if (_self instanceof polybot_modelling_language.TurnRight){
+			result = polybot_modelling_language.aspects.TurnRightAspect.execute((polybot_modelling_language.TurnRight)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnRightAspect
+	// BeginInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.ComeHomeAspect
+		if (_self instanceof polybot_modelling_language.ComeHome){
+			result = polybot_modelling_language.aspects.ComeHomeAspect.execute((polybot_modelling_language.ComeHome)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.ComeHomeAspect
+	// BeginInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.CatchAspect
+		if (_self instanceof polybot_modelling_language.Catch){
+			result = polybot_modelling_language.aspects.CatchAspect.execute((polybot_modelling_language.Catch)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.InstructionAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.CatchAspect
+	// BeginInjectInto polybot_modelling_language.aspects.TurnAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnRightAspect
+		if (_self instanceof polybot_modelling_language.TurnRight){
+			result = polybot_modelling_language.aspects.TurnRightAspect.execute((polybot_modelling_language.TurnRight)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.TurnAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnRightAspect
+	// BeginInjectInto polybot_modelling_language.aspects.TurnAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnLeftAspect
+		if (_self instanceof polybot_modelling_language.TurnLeft){
+			result = polybot_modelling_language.aspects.TurnLeftAspect.execute((polybot_modelling_language.TurnLeft)_self,bot);
+		} else
+		// EndInjectInto polybot_modelling_language.aspects.TurnAspect#boolean execute(PolyRob) from polybot_modelling_language.aspects.TurnLeftAspect

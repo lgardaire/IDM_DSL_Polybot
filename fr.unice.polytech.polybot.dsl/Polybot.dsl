@@ -1,0 +1,3 @@
+name = fr.unice.polytech.polybot.Polybot
+ecore = platform:/resource/polybot_modelling_language/model/polybot_modelling_language.ecore
+k3 = polybot_modelling_language.aspects.InstructionAspect,polybot_modelling_language.aspects.MoveAspect,polybot_modelling_language.aspects.RobotAspect,polybot_modelling_language.aspects.SceneAspect,polybot_modelling_language.aspects.TurnAspect
