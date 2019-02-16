@@ -1,0 +1,11 @@
+Robot debug
+	forward 300 -> next | go;
+	catch;
+	comeHome -> drop;
+	turnRight 180 label demitour;
+	forward 400 label go -> finish | next;
+	turnLeft 50 -> next | previous;
+	forward 100;
+	comeHome label finish;
+	release label drop -> next | demitour;
+	
