@@ -38,9 +38,9 @@ public class ReleaseAspect extends InstructionAspect {
   protected static boolean _privk3_execute(final ReleaseAspectReleaseAspectProperties _self_, final Release _self, final PolyRob bot) {
     InputOutput.<String>println("Release object");
     bot.openGrip();
-    bot.closeMode = false;
     bot.goStraight(1, 2000);
     InstructionAspect.updateDisplay(_self, bot);
-    return true;
+    int _size = bot.getViewableBlobs().size();
+    return (_size == 0);
   }
 }

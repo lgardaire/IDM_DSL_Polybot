@@ -45,7 +45,6 @@ public class PolyRob {
 	public IntW handleDetectedObj = new IntW(0);
 	public FloatWA mapDetectedObject = new FloatWA(0);
 	
-	public boolean closeMode = false;
 	public Position2D homeCoordinates = new Position2D(-150,480);
 	protected IntW consoleDebugHandle = new IntW(0);
 	public boolean debugMode = false;
@@ -292,7 +291,7 @@ public class PolyRob {
 			IntWA position = new IntWA(2);
 			position.w = new int[] {0, 0};
 			IntWA size = new IntWA(2);
-			size.w = new int[] {500, 250};
+			size.w = new int[] {400, 100};
 			FloatWA textColor = new FloatWA(3);
 			textColor.w = new float[]{1, 1, 1};
 			vrep.simxAuxiliaryConsoleOpen(clientID, "Debug informations", 5, 1, position, size, textColor, new FloatWA(3), consoleDebugHandle, remoteApi.simx_opmode_blocking);

@@ -63,24 +63,6 @@ public class RobotAspect {
     };
   }
   
-  private static boolean closeMode(final Robot _self) {
-    final polybot_modelling_language.aspects.RobotAspectRobotAspectProperties _self_ = polybot_modelling_language.aspects.RobotAspectRobotAspectContext.getSelf(_self);
-    Object result = null;
-    // #DispatchPointCut_before# boolean closeMode()
-    if (_self instanceof polybot_modelling_language.Robot){
-    	result = polybot_modelling_language.aspects.RobotAspect._privk3_closeMode(_self_, (polybot_modelling_language.Robot)_self);
-    };
-    return (boolean)result;
-  }
-  
-  private static void closeMode(final Robot _self, final boolean closeMode) {
-    final polybot_modelling_language.aspects.RobotAspectRobotAspectProperties _self_ = polybot_modelling_language.aspects.RobotAspectRobotAspectContext.getSelf(_self);
-    // #DispatchPointCut_before# void closeMode(boolean)
-    if (_self instanceof polybot_modelling_language.Robot){
-    	polybot_modelling_language.aspects.RobotAspect._privk3_closeMode(_self_, (polybot_modelling_language.Robot)_self,closeMode);
-    };
-  }
-  
   protected static void _privk3_executeInstructions(final RobotAspectRobotAspectProperties _self_, final Robot _self, final PolyRob bot) {
     bot.debugMode = _self.isDebug();
     bot.debugInfos();
@@ -181,40 +163,6 @@ public class RobotAspect {
     }
     if (!setterCalled) {
     	_self_.currentPosition = currentPosition;
-    }
-  }
-  
-  protected static boolean _privk3_closeMode(final RobotAspectRobotAspectProperties _self_, final Robot _self) {
-    try {
-    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
-    		if (m.getName().equals("isCloseMode") &&
-    			m.getParameterTypes().length == 0) {
-    				Object ret = m.invoke(_self);
-    				if (ret != null) {
-    					return (boolean) ret;
-    				}		}
-    	}
-    } catch (Exception e) {
-    	// Chut !
-    }
-    return _self_.closeMode;
-  }
-  
-  protected static void _privk3_closeMode(final RobotAspectRobotAspectProperties _self_, final Robot _self, final boolean closeMode) {
-    boolean setterCalled = false;
-    try {
-    	for (java.lang.reflect.Method m : _self.getClass().getMethods()) {
-    		if (m.getName().equals("setCloseMode")
-    				&& m.getParameterTypes().length == 1) {
-    			m.invoke(_self, closeMode);
-    			setterCalled = true;
-    		}
-    	}
-    } catch (Exception e) {
-    	// Chut !
-    }
-    if (!setterCalled) {
-    	_self_.closeMode = closeMode;
     }
   }
 }

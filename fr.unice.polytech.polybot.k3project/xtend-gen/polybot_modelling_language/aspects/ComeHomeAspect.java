@@ -54,10 +54,7 @@ public class ComeHomeAspect extends InstructionAspect {
     bot.goStraight(15, _multiply);
     InstructionAspect.updateDisplay(_self, bot);
     while ((Math.abs((bot.getPosition().y - bot.homeCoordinates.y)) > 5)) {
-      {
-        bot.goStraight(5, 50);
-        InputOutput.<Integer>println(Integer.valueOf(Math.abs((bot.getPosition().y - bot.homeCoordinates.y))));
-      }
+      bot.goStraight(5, 50);
     }
     InstructionAspect.updateDisplay(_self, bot);
     if (robotIsOnLeftSide) {
@@ -81,25 +78,7 @@ public class ComeHomeAspect extends InstructionAspect {
     bot.goStraight(15, _multiply_1);
     InstructionAspect.updateDisplay(_self, bot);
     while ((Math.abs((bot.getPosition().x - bot.homeCoordinates.x)) > 5)) {
-      {
-        bot.goStraight(5, 50);
-        InputOutput.<Integer>println(Integer.valueOf(Math.abs((bot.getPosition().x - bot.homeCoordinates.x))));
-      }
-    }
-    InstructionAspect.updateDisplay(_self, bot);
-    bot.openGrip();
-    bot.closeMode = false;
-    bot.goStraight(1, 2000);
-    InstructionAspect.updateDisplay(_self, bot);
-    orientationToReach = 0;
-    if ((bot.getPosition().y < bot.homeCoordinates.y)) {
-      while ((Math.abs((bot.getOrientation() - orientationToReach)) > 0.1)) {
-        bot.turnRight(5, 50);
-      }
-    } else {
-      while ((Math.abs((bot.getOrientation() - orientationToReach)) > 0.1)) {
-        bot.turnLeft(5, 50);
-      }
+      bot.goStraight(5, 50);
     }
     InstructionAspect.updateDisplay(_self, bot);
     return (!(bot.getPosition().x > (-20)));

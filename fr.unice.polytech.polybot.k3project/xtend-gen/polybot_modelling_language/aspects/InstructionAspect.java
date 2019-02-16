@@ -4,7 +4,6 @@ import fr.inria.diverse.k3.al.annotationprocessor.Abstract;
 import fr.inria.diverse.k3.al.annotationprocessor.Aspect;
 import fr.unice.polytech.deantoni.vrep.polybot.robot.PolyRob;
 import fr.unice.polytech.deantoni.vrep.polybot.utils.Blob;
-import fr.unice.polytech.deantoni.vrep.polybot.utils.Position2D;
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import polybot_modelling_language.Instruction;
@@ -114,31 +113,15 @@ public abstract class InstructionAspect {
         return false;
       }
       int objDist = bot.getDetectedObjectDistance();
-      InputOutput.<Integer>println(Integer.valueOf(objDist));
-      if ((objDist <= 20)) {
-        bot.openGrip();
-      }
-      double _cos = Math.cos(bot.getOrientation());
-      double _multiply = (_cos * 200);
-      double _plus = (bot.getPosition().x + _multiply);
-      long _round = Math.round(_plus);
-      double _sin = Math.sin(bot.getOrientation());
-      double _multiply_1 = (_sin * 200);
-      double _plus_1 = (bot.getPosition().y + _multiply_1);
-      long _round_1 = Math.round(_plus_1);
-      Position2D objectCoordinate = new Position2D(
-        ((int) _round), 
-        ((int) _round_1));
       InputOutput.<String>println(((("Object pos : " + Integer.valueOf(bot.getPosition().x)) + " ") + Integer.valueOf(bot.getPosition().y)));
       ArrayList<Blob> _viewableBlobs = bot.getViewableBlobs();
       for (final Blob b : _viewableBlobs) {
         {
-          InputOutput.<String>println(((("Blob pos : " + Integer.valueOf(b.positionX)) + " ") + Integer.valueOf(b.positionY)));
+          InputOutput.<String>println(((("Paint bomb pos : " + Integer.valueOf(b.positionX)) + " ") + Integer.valueOf(b.positionY)));
           if (((Math.abs((b.positionX - bot.getPosition().x)) <= 100) && (Math.abs((b.positionY - bot.getPosition().y)) <= 100))) {
             InputOutput.<String>println("Paint bomb");
             bot.closeGrip();
             bot.goStraight(13, 3000);
-            bot.closeMode = true;
             InstructionAspect.updateDisplay(_self, bot);
             return true;
           }

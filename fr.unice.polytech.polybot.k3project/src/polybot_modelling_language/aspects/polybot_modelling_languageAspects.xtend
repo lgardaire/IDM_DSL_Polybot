@@ -91,7 +91,6 @@ class TurnLeftAspect extends TurnAspect {
 @Aspect(className=Robot)
 class RobotAspect {
 	var Position2D currentPosition = new Position2D(0, 0);
-	var boolean closeMode = false;
 	
 	@Step
 	def void executeInstructions(PolyRob bot){
@@ -161,21 +160,13 @@ abstract class InstructionAspect {
 		var boolean hasFound = bot.hasDetectedAnObject();
 		if(!hasFound) return false;
 		var int objDist = bot.detectedObjectDistance;
-		println(objDist)
-		if(objDist <= 20) {
-			bot.openGrip();
-		}
-		var Position2D objectCoordinate = new Position2D(
-				Math.round(bot.position.x+Math.cos(bot.orientation)*200) as int,
-				Math.round(bot.position.y+Math.sin(bot.orientation)*200) as int);	
 		println("Object pos : "+bot.position.x+ " "+bot.position.y)
 		for(Blob b: bot.viewableBlobs) {
-			println("Blob pos : "+b.positionX+" "+b.positionY)
+			println("Paint bomb pos : "+b.positionX+" "+b.positionY)
 			if ((Math.abs(b.positionX - bot.position.x) <= 100) && (Math.abs(b.positionY - bot.position.y) <= 100)) {
 				println("Paint bomb");
 				bot.closeGrip()
 				bot.goStraight(13,3000);
-				bot.closeMode = true;
 				_self.updateDisplay(bot);
 				return true;
 			}
@@ -208,7 +199,6 @@ class ComeHomeAspect extends InstructionAspect {
 		_self.updateDisplay(bot);
 		while(Math.abs(bot.position.y - bot.homeCoordinates.y) > 5) {
 			bot.goStraight(5, 50);
-			println(Math.abs(bot.position.y - bot.homeCoordinates.y))
 		}
 		_self.updateDisplay(bot);
 		if(robotIsOnLeftSide){
@@ -227,22 +217,6 @@ class ComeHomeAspect extends InstructionAspect {
 		_self.updateDisplay(bot);
 		while(Math.abs(bot.position.x - bot.homeCoordinates.x) > 5) {
 			bot.goStraight(5, 50);
-			println(Math.abs(bot.position.x - bot.homeCoordinates.x))
-		}
-		_self.updateDisplay(bot);
-		bot.openGrip()
-		bot.closeMode = false;
-		bot.goStraight(1,2000);
-		_self.updateDisplay(bot);
-		orientationToReach = 0
-		if(bot.position.y < bot.homeCoordinates.y){
-			while(Math.abs(bot.orientation-orientationToReach) > 0.1){
-				bot.turnRight(5, 50)
-			}
-		} else {
-			while(Math.abs(bot.orientation-orientationToReach) > 0.1){
-				bot.turnLeft(5, 50)
-			}
 		}
 		_self.updateDisplay(bot);
 		return !(bot.position.x > -20);
@@ -267,10 +241,9 @@ class ReleaseAspect extends InstructionAspect {
 	def boolean execute(PolyRob bot){
 		println("Release object")
 		bot.openGrip()
-		bot.closeMode = false;
 		bot.goStraight(1,2000)
 		_self.updateDisplay(bot);
-		return true;
+		return bot.viewableBlobs.size == 0;
 	}
 }
 
