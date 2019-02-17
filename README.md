@@ -54,8 +54,62 @@ When the file is created/imported in Gemoc, a pop up window appears asking if yo
 
 The fun can now begin ! You can begin to code.
 
+For more details on the language, go to *My language* part.
+
 ### Open the scene in V-Rep and run your program
 
 To visualise the robot, you have to launch V-Rep and open the appropriate scene.
 To do that, click on *File -> Open scene...* and choose the `polyBotVersusPaintBomb.ttt` file in the `scenes` folder of my project.
 Now, click on the *Run* icon on the Eclipse application with your `.bot` file to watch the robot complete your orders.
+
+## My language
+
+### My domain model
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/lgardaire/IDM_DSL_Polybot/master/images/classes_diagram.png" />
+</p>
+
+### How to code
+
+Start your file with the keyword **Robot**. You can add **debug** after it to activate a debug console which displays informations on your robot.
+After that, you can start using instructions.
+
+### Available instructions
+
+- **forward** : parameter distance
+- **turnRight** : parameter angle in degrees
+- **turnLeft** : parameter angle in degrees
+- **catch** : no parameter
+- **release** : no parameter
+- **comeHome** : no parameter
+  
+⚠ Each instruction ends with a *;*. ⚠
+
+### Goto implementation
+
+You can add **label** <name_of_your_label> after your command to have the possibility to come back to this instruction. It's optional.
+
+Each instruction returns a boolean value depending on the result of the action :
+
+- **forward** : true if the robot has found a bomb after moving, false otherwise
+- **turnRight** : true if the robot has found a bomb after turning, false otherwise
+- **turnLeft** : true if the robot has found a bomb after turning, false otherwise
+- **catch** : always true
+- **release** : true if at least one bomb remains to catch, false otherwise
+- **comeHome** : always true
+  
+At the end of the instruction, you can use the **->** command to go to another label. Here two cases :
+
+- If you specify one label, the robot will go to this instruction, whatever the boolean returned
+- You can specify two labels separated by **|** : the first one if the boolean returned is true, and the second one if false
+  
+In this, you can use the labels created, but also *next* and *previous*.
+If you don't specify any of it, the robot will continue with the next instruction sequentially.
+
+So a full command looks like :
+```
+forward 100 label go100 -> next | turn45;
+```
+
+*if you have created a label turn45 somewhere, otherwise the robot will stop at this instruction (no crash)*
