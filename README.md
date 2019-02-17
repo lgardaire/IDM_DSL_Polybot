@@ -72,7 +72,7 @@ Now, click on the *Run* icon on the Eclipse application with your `.bot` file to
 
 ### How to code
 
-Start your file with the keyword **Robot**. You can add **debug** after it to activate a debug console which displays informations on your robot.
+Start your file with the keyword **Robot**. You can add the keyword **debug** after it to activate a debug console which displays informations on your robot.
 After that, you can start using instructions.
 
 ### Available instructions
@@ -84,7 +84,7 @@ After that, you can start using instructions.
 - **release** : no parameter
 - **comeHome** : no parameter
   
-⚠ Each instruction ends with a *;*. ⚠
+⚠ Each instruction ends with a *;* ⚠
 
 ### Goto implementation
 
@@ -97,7 +97,7 @@ Each instruction returns a boolean value depending on the result of the action :
 - **turnLeft** : true if the robot has found a bomb after turning, false otherwise
 - **catch** : always true
 - **release** : true if at least one bomb remains to catch, false otherwise
-- **comeHome** : always true
+- **comeHome** : true if the robot is in the safe zone, false otherwise
   
 At the end of the instruction, you can use the **->** command to go to another label. Here two cases :
 
