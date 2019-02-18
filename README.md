@@ -21,7 +21,7 @@ After that, you have to create a Runtime Eclipse Application and link the Polybo
 
 To create the new Eclipse application, click on the little arrow next to the bug icon or the Run icon on the toolbar, depending on if you want to run or debug.
 Click on *Run / Debug configurations*
-Choose the *Eclipse Application* in the left tab, click on the little arrow to open the list and choose *Launch Runtime Eclipse*
+Choose the *Eclipse Application* in the left tab, double click on it to create a new configuration.
 You can now choose a name for your new Eclipse application (optional) and go to the *Environment* tab to add the Polybot library.
 Click on *New* and add the following variable :
 
@@ -52,7 +52,7 @@ After that, you can :
 
 When the file is created/imported in Gemoc, a pop up window appears asking if you want to convert your test project to a Xtext project. Click on *Yes*.
 
-The fun can now begin ! You can begin to code.
+You can now begin to code.
 
 For more details on the language, go to *My language* part.
 
@@ -60,6 +60,7 @@ For more details on the language, go to *My language* part.
 
 To visualise the robot, you have to launch V-Rep and open the appropriate scene.
 To do that, click on *File -> Open scene...* and choose the `polyBotVersusPaintBomb.ttt` file in the `scenes` folder of my project.
+Now go back to your Eclipse application with your `.bot` file and click on the little arrow next to the *Run* button. Click on *Run configurations ...* and double click on *Executable model with Gemoc Java engine* on the left tab to create a new Run configuration. Put the path of your `.bot` file in *Model to execute* by browsing and choose the Polybot language in the *Languages* section. Scroll down and go to the last section. Browse the *Main method* and browse the *Main model element path* too (there should be only one for each of them).
 Now, click on the *Run* icon on the Eclipse application with your `.bot` file to watch the robot complete your orders.
 
 ## My language
