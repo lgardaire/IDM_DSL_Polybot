@@ -40,7 +40,7 @@ class SceneAspect {
 class MoveStraightAspect extends InstructionAspect {
 	@Step
 	def boolean execute(PolyRob bot){
-		println("Move straight")
+		bot.log2vrep("Move straight");
 		_self.updateDisplay(bot);
 		var pos = bot.position
 		bot.goStraight(15, _self.distance*12);
@@ -48,7 +48,7 @@ class MoveStraightAspect extends InstructionAspect {
 		while(calculateDistance(_self, pos.x, pos.y, bot.position.x, bot.position.y) < _self.distance) {
 			bot.goStraight(5, 100);
 		}
-		println("Travelled distance : "+calculateDistance(_self, pos.x, pos.y, bot.position.x, bot.position.y) as int)
+		bot.log2vrep("Travelled distance : "+calculateDistance(_self, pos.x, pos.y, bot.position.x, bot.position.y) as int)
 		hasFoundAColorBomb(_self, bot);
 	}
 }
@@ -62,7 +62,7 @@ abstract class TurnAspect extends InstructionAspect {
 class TurnRightAspect extends TurnAspect {
 	@Step
 	def boolean execute(PolyRob bot){
-		println("Turn right")
+		bot.log2vrep("Turn right")
 		_self.updateDisplay(bot);
 		var double orientationToReach = bot.orientation - (_self.angle*Math.PI/180)
 		if(orientationToReach < 0) orientationToReach = 2*Math.PI + orientationToReach
@@ -77,7 +77,7 @@ class TurnRightAspect extends TurnAspect {
 class TurnLeftAspect extends TurnAspect {
 	@Step
 	def boolean execute(PolyRob bot){
-		println("Turn left")
+		bot.log2vrep("Turn left")
 		_self.updateDisplay(bot);
 		var double orientationToReach = bot.orientation + (_self.angle*Math.PI/180)
 		if(orientationToReach > 2*Math.PI) orientationToReach = orientationToReach - 2*Math.PI
@@ -160,11 +160,10 @@ abstract class InstructionAspect {
 		var boolean hasFound = bot.hasDetectedAnObject();
 		if(!hasFound) return false;
 		var int objDist = bot.detectedObjectDistance;
-		println("Object pos : "+bot.position.x+ " "+bot.position.y)
+		bot.log2vrep("Object pos : "+bot.position.x+ " "+bot.position.y)
 		for(Blob b: bot.viewableBlobs) {
-			println("Paint bomb pos : "+b.positionX+" "+b.positionY)
 			if ((Math.abs(b.positionX - bot.position.x) <= 100) && (Math.abs(b.positionY - bot.position.y) <= 100)) {
-				println("Paint bomb");
+				bot.log2vrep("Detected paint bomb");
 				bot.closeGrip()
 				bot.goStraight(13,3000);
 				_self.updateDisplay(bot);
@@ -172,7 +171,7 @@ abstract class InstructionAspect {
 			}
 		}
 		if(objDist > 100) return false;
-		println("Wall");
+		bot.log2vrep("Detected wall");
 		bot.turnRight(8, 1000);
 		hasFoundAColorBomb(_self, bot);
 	}
@@ -182,7 +181,7 @@ abstract class InstructionAspect {
 class ComeHomeAspect extends InstructionAspect {
 	@Step
 	def boolean execute(PolyRob bot){
-		println("Come home")
+		bot.log2vrep("Come home")
 		var boolean robotIsOnLeftSide = true;
 		var double orientationToReach;
 		if(bot.position.y > bot.homeCoordinates.y) {
@@ -227,7 +226,7 @@ class ComeHomeAspect extends InstructionAspect {
 class CatchAspect extends InstructionAspect {
 	@Step
 	def boolean execute(PolyRob bot){
-		println("Catch object")
+		bot.log2vrep("Catch object")
 		bot.closeGrip()
 		bot.goStraight(5,2000)
 		_self.updateDisplay(bot);
@@ -239,7 +238,7 @@ class CatchAspect extends InstructionAspect {
 class ReleaseAspect extends InstructionAspect {
 	@Step
 	def boolean execute(PolyRob bot){
-		println("Release object")
+		bot.log2vrep("Release object")
 		bot.openGrip()
 		bot.goStraight(1,2000)
 		_self.updateDisplay(bot);
